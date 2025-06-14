@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { GoogleMap, LoadScript, StandaloneSearchBox ,Marker} from '@react-google-maps/api';
-
+import {  isMobile } from 'react-device-detect';
     
 const containerStyle = {
   width: '100vw',
@@ -84,7 +84,7 @@ const [error, setError] = useState(null);
 
   return (
     <div>
-      <LoadScript googleMapsApiKey="AIzaSyBOcZfHwQEvLQUFW7AbaJ5-r8rfIhzyBpI" libraries={['places']}>
+      <LoadScript  googleMapsApiKey="AIzaSyBOcZfHwQEvLQUFW7AbaJ5-r8rfIhzyBpI" libraries={['places']}>
         <StandaloneSearchBox onLoad={onLoad} onPlacesChanged={onPlacesChanged}  ref={searchBoxRef}>
           <input
             type="text"
@@ -93,7 +93,7 @@ const [error, setError] = useState(null);
             style={{
               boxSizing: `border-box`,
               border: `1px solid transparent`,
-              width: `500px`,
+              width: isMobile?`80%`:`30%`,
               height: `50px`,
               padding: `0 12px`,
               borderRadius: `3px`,
@@ -103,18 +103,19 @@ const [error, setError] = useState(null);
               zIndex:2,
               textOverflow: `ellipses`,
               position: "fixed",
-              left: "200px",
-              top:'10px',
+              left: "10px",
+              top:'60px',
              
             }}
           />
         </StandaloneSearchBox>
-        <div style={{position:'fixed', zIndex:2, left:'720px', top:'10px'}}>
+        <div style={{position:'fixed', zIndex:2, left:isMobile?'calc(80% + 20px)':'calc(30% + 20px)', top:'60px'}}>
           <div onClick={()=>handleCariDriver()} style={{display:'flex',cursor:'pointer', padding:'5px 20px',justifyContent:'center',height:'40px', alignItems:'center', background:'white', boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,}}>
             CARI DRIVER
           </div>
         </div>
         <GoogleMap
+          map
           mapContainerStyle={containerStyle}
           center={location}
           zoom={15}
