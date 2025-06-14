@@ -93,7 +93,7 @@ const [error, setError] = useState(null);
             style={{
               boxSizing: `border-box`,
               border: `1px solid transparent`,
-              width: isMobile?`80%`:`30%`,
+              width: isMobile?`60%`:`30%`,
               height: `50px`,
               padding: `0 12px`,
               borderRadius: `3px`,
@@ -109,7 +109,7 @@ const [error, setError] = useState(null);
             }}
           />
         </StandaloneSearchBox>
-        <div style={{position:'fixed', zIndex:2, left:isMobile?'calc(80% + 20px)':'calc(30% + 20px)', top:'60px'}}>
+        <div style={{position:'fixed', zIndex:2, left:isMobile?'calc(60% + 20px)':'calc(30% + 20px)', top:'60px'}}>
           <div onClick={()=>handleCariDriver()} style={{display:'flex',cursor:'pointer', padding:'5px 20px',justifyContent:'center',height:'40px', alignItems:'center', background:'white', boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,}}>
             CARI DRIVER
           </div>
